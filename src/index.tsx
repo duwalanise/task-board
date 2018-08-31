@@ -1,7 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import Column from './column';
+import initialData from './initila-data';
 
-const App = () => <div>HelloWorld</div>
+class App extends React.Component {
+  public state = initialData;
+
+  public render() {
+    return this.state.columnOrder.map(columnId => {
+      const column = this.state.columns[columnId];
+      const tasks = column.taskIds.map((taskId: string) => this.state.tasks[taskId]);
+      return <Column key={column.id} column={column} tasks={tasks} />;
+    })
+  }
+}
 
 ReactDOM.render(
   <App />,
