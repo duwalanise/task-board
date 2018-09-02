@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Droppable} from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import Task from './task';
 
@@ -24,11 +25,19 @@ class Column extends React.Component<IProps> {
     return (
       <Container>
         <Title>{this.props.column.title}</Title>
-        <TaskList>
-        {
-          this.props.tasks.map((task: any) => <Task key={task.id} task={task} />)
-        }
-        </TaskList>
+        <Droppable droppableId={this.props.column.id}>
+          { (provided) =>
+            <TaskList
+              {...provided.droppableProps}
+              innerRef={provided.innerRef}
+            >
+            {
+              this.props.tasks.map((task: any, idx: number) => <Task key={task.id} task={task} index={idx} />)
+            }
+            {provided.placeholder}
+            </TaskList>
+          }
+        </Droppable>
       </Container>
     )
   }

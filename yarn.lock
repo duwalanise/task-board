@@ -121,6 +121,12 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-beautiful-dnd@^7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-beautiful-dnd/-/react-beautiful-dnd-7.1.1.tgz#f0e2360ca9ccfed94461d52cccb67f72675e4706"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^16.0.7":
   version "16.0.7"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.0.7.tgz#54d0f867a76b90597e8432030d297982f25c20ba"
