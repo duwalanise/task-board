@@ -1,44 +1,31 @@
 import * as React from 'react';
 import {Droppable} from 'react-beautiful-dnd';
-import styled from 'styled-components';
 import Task from './task';
 
 interface IProps {
   column: any,
   tasks: any,
 }
-
-const Container = styled.div`
-  margin: 8px;
-  border: solid 1px lightgrey;
-  border-radius: 2px;
-`;
-const Title = styled.div`
-  padding: 8px;
-`;
-const TaskList = styled.div`
-  padding: 8px;
-`;
-
 class Column extends React.Component<IProps> {
   public render(){
     return (
-      <Container>
-        <Title>{this.props.column.title}</Title>
+      <div className="column-container">
+        <div className='title'>{this.props.column.title}</div>
         <Droppable droppableId={this.props.column.id}>
-          { (provided) =>
-            <TaskList
+          { (provided, snapshot) =>
+            <div
               {...provided.droppableProps}
-              innerRef={provided.innerRef}
+              ref={provided.innerRef}
+              className={`task-container ${snapshot.isDraggingOver ? 'draggingOver': ''}` }
             >
             {
               this.props.tasks.map((task: any, idx: number) => <Task key={task.id} task={task} index={idx} />)
             }
             {provided.placeholder}
-            </TaskList>
+            </div>
           }
         </Droppable>
-      </Container>
+      </div>
     )
   }
 }

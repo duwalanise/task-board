@@ -1,0 +1,47 @@
+.task-board {
+  display: flex;
+}
+
+.column-container {
+  margin: 10px;
+  background: #e9e9eb;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.title {
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.task-container {
+  height: 100%;
+  width: inherit;
+  padding: 10px;
+  transition: background 0.3s ease;
+
+}
+
+.task-container.draggingOver {
+  background: lightblue;
+}
+
+.task {
+  background: white;
+  margin: 5px;
+  border: solid 1px lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  border-radius: 0 5px 5px 0;
+  transition: background 0.3s ease;
+  border-left: solid 3px red;
+}
+
+.task.dragging {
+  background: lightgreen;
+}
